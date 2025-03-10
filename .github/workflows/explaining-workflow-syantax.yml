@@ -1,0 +1,22 @@
+name: Python CI/CD Pipeline  # 1️⃣ Name of the workflow
+
+on: [push, pull_request]  # 2️⃣ Events that trigger this workflow
+
+jobs:  # 3️⃣ Jobs section - contains multiple tasks
+  build:  # 4️⃣ Job name (can be anything)
+    runs-on: ubuntu-latest  # 5️⃣ The runner (OS environment)
+    
+    steps:  # 6️⃣ Steps section - lists each action
+      - name: Checkout Code  # 7️⃣ Step name
+        uses: actions/checkout@v3  # 8️⃣ Uses a predefined GitHub action
+
+      - name: Set up Python  # Another step
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'  # 9️⃣ Input parameters for the action
+
+      - name: Install Dependencies  
+        run: pip install -r requirements.txt  # 🔟 Custom shell command
+
+      - name: Run Tests  
+        run: pytest tests/
