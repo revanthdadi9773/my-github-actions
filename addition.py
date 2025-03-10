@@ -1,3 +1,4 @@
+#code for addtion function
 def add(a, b):
     return a + b
 
